@@ -38,7 +38,7 @@ graph TD
 
 Here's a flowchart representing the lifecycle of a ticket in our system:
 
-\`\`\`mermaid
+```mermaid
 stateDiagram-v2
     [*] --> Created
     Created --> InProgress: Assign
@@ -49,7 +49,7 @@ stateDiagram-v2
     InReview --> Resolved: Approve
     Resolved --> Closed: Close Ticket
     Closed --> [*]
-\`\`\`
+```
 
 ## 🚀 Getting Started
 
