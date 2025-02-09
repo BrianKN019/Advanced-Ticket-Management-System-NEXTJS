@@ -21,7 +21,7 @@ Our ticket management system comes packed with a variety of features designed to
 
 Below is a high-level overview of our system architecture:
 
-\`\`\`mermaid
+```mermaid
 graph TD
     A[Client] -->|HTTP/WebSocket| B[Load Balancer]
     B --> C[Web Server]
@@ -32,7 +32,7 @@ graph TD
     G --> H[Background Workers]
     D --> I[Authentication Service]
     D --> J[Notification Service]
-\`\`\`
+```
 
 ## 🔄 Ticket Lifecycle
 
@@ -62,26 +62,26 @@ stateDiagram-v2
 ### Installation
 
 1. Clone the repository:
-   \`\`\`bash
+  ```bash
    git clone https://github.com/your-org/advanced-ticket-system.git
    cd advanced-ticket-system
-   \`\`\`
+  ```
 
 2. Install dependencies:
-   \`\`\`bash
+  ```bash
    npm install
-   \`\`\`
+  ```
 
 3. Set up environment variables:
-   \`\`\`bash
+ ```bash
    cp .env.example .env
    # Edit .env with your configuration
-   \`\`\`
+ ```
 
 4. Run the development server:
-   \`\`\`bash
+   ```bash
    npm run dev
-   \`\`\`
+   ```
 
 5. Open \`http://localhost:3000\` in your browser.
 
@@ -125,7 +125,7 @@ Our system leverages artificial intelligence to enhance your experience:
 
 Here's how our AI system works:
 
-\`\`\`mermaid
+```mermaid
 graph LR
     A[Ticket Created] --> B[NLP Processing]
     B --> C{Categorization}
@@ -135,7 +135,7 @@ graph LR
     D --> G[Auto-assign to Developer]
     E --> H[Prioritization Algorithm]
     F --> I[Route to Support Agent]
-\`\`\`
+```
 
 ## 🛠️ Customization
 
