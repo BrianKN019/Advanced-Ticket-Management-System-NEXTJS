@@ -41,12 +41,29 @@ const initialTickets: Ticket[] = [
     priority: "Medium",
     assignee: { name: "Jane Smith", email: "jane@example.com", avatar: "/avatars/jane.png" },
   },
+
   {
     id: "3",
     title: "Fix pagination bug",
     description: "Resolve issues with pagination on the product listing page",
     status: "Closed",
     priority: "Low",
+    assignee: { name: "Mike Johnson", email: "mike@example.com", avatar: "/avatars/mike.png" },
+  },
+  {
+    id: "4",
+    title: "Documentation plan ",
+    description: "Resolve issues with pagination on the product listing page",
+    status: "Closed",
+    priority: "Low",
+    assignee: { name: "Mike Johnson", email: "mike@example.com", avatar: "/avatars/mike.png" },
+  },
+  {
+    id: "5",
+    title: "Create bug Register",
+    description: "Resolve issues with pagination on the product listing page",
+    status: "Closed",
+    priority: "High",
     assignee: { name: "Mike Johnson", email: "mike@example.com", avatar: "/avatars/mike.png" },
   },
 ]
