@@ -23,22 +23,22 @@ const initialEvents: Event[] = [
   {
     id: 1,
     title: "Project Kickoff",
-    start: new Date(2023, 5, 1, 9, 0),
-    end: new Date(2023, 5, 1, 11, 0),
+    start: new Date(2025, 5, 1, 9, 0),
+    end: new Date(2025, 5, 1, 11, 0),
     color: "#3498db",
   },
   {
     id: 2,
     title: "Team Meeting",
-    start: new Date(2023, 5, 3, 14, 0),
-    end: new Date(2023, 5, 3, 15, 30),
+    start: new Date(2025, 5, 3, 14, 0),
+    end: new Date(2025, 5, 3, 15, 30),
     color: "#2ecc71",
   },
   {
     id: 3,
     title: "Release Planning",
-    start: new Date(2023, 5, 5, 10, 0),
-    end: new Date(2023, 5, 5, 12, 0),
+    start: new Date(2025, 5, 5, 10, 0),
+    end: new Date(2025, 5, 5, 12, 0),
     color: "#e74c3c",
   },
 ]
