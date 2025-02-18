@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Calendar, momentLocalizer } from "react-big-calendar"
+import { Calendar, momentLocalizer, type Event as CalendarEvent } from "react-big-calendar"
 import moment from "moment"
 import "react-big-calendar/lib/css/react-big-calendar.css"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -11,7 +11,7 @@ import { Label } from "@/components/ui/label"
 moment.locale("en-GB")
 const localizer = momentLocalizer(moment)
 
-type Event = {
+interface Event extends CalendarEvent {
   id: number
   title: string
   start: Date
@@ -23,22 +23,22 @@ const initialEvents: Event[] = [
   {
     id: 1,
     title: "Project Kickoff",
-    start: new Date(2025, 5, 1, 9, 0),
-    end: new Date(2025, 5, 1, 11, 0),
+    start: new Date(2023, 5, 1, 9, 0),
+    end: new Date(2023, 5, 1, 11, 0),
     color: "#3498db",
   },
   {
     id: 2,
     title: "Team Meeting",
-    start: new Date(2025, 5, 3, 14, 0),
-    end: new Date(2025, 5, 3, 15, 30),
+    start: new Date(2023, 5, 3, 14, 0),
+    end: new Date(2023, 5, 3, 15, 30),
     color: "#2ecc71",
   },
   {
     id: 3,
     title: "Release Planning",
-    start: new Date(2025, 5, 5, 10, 0),
-    end: new Date(2025, 5, 5, 12, 0),
+    start: new Date(2023, 5, 5, 10, 0),
+    end: new Date(2023, 5, 5, 12, 0),
     color: "#e74c3c",
   },
 ]
