@@ -14,22 +14,22 @@ type Notification = {
   read: boolean
 }
 
-export function UserMentions() {
+export function UserMentions() { 
   const [notifications, setNotifications] = useState<Notification[]>([
     {
       id: "1",
       user: "John Doe",
       avatar: "/avatars/john.png",
-      content: "mentioned you in ticket #1234",
+      content: "mentioned you in ticket #1234", 
       timestamp: "2023-06-10T10:30:00Z",
       read: false,
     },
     {
       id: "2",
       user: "Jane Smith",
-      avatar: "/avatars/jane.png",
+      avatar: "/avatars/jane.png", 
       content: "assigned you to ticket #5678",
-      timestamp: "2023-06-10T11:15:00Z",
+      timestamp: "2023-06-10T11:15:00Z", 
       read: false,
     },
   ])
