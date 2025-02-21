@@ -22,7 +22,7 @@ interface CreateTicketModalProps {
     assignee: string
     assigneeEmail: string
     priorityScore: number
-    estimatedTime: number
+    estimatedTime: number 
   }) => void
 }
 
