@@ -1,7 +1,7 @@
 "use client"
 
 import type React from "react"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -34,18 +34,47 @@ export function CreateTicketModal({ onCreateTicket }: CreateTicketModalProps) {
   const [assignee, setAssignee] = useState("")
   const [assigneeEmail, setAssigneeEmail] = useState("")
   const [priorityScore, setPriorityScore] = useState(50)
+  const [isPriorityScoreCustom, setIsPriorityScoreCustom] = useState(false)
   const [estimatedTime, setEstimatedTime] = useState(1)
+
+  const priorityScoreDefaults: Record<TicketPriority, number> = {
+    Low: 20,
+    Medium: 50,
+    High: 80,
+    Critical: 95,
+  }
+
+  useEffect(() => {
+    if (!isPriorityScoreCustom) {
+      setPriorityScore(priorityScoreDefaults[priority])
+    }
+  }, [isPriorityScoreCustom, priority])
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    onCreateTicket({ title, description, status, priority, assignee, assigneeEmail, priorityScore, estimatedTime })
+    const normalizedTitle = title.trim()
+    const normalizedDescription = description.trim()
+    const normalizedAssignee = assignee.trim()
+    const normalizedAssigneeEmail = assigneeEmail.trim()
+
+    onCreateTicket({
+      title: normalizedTitle,
+      description: normalizedDescription,
+      status,
+      priority,
+      assignee: normalizedAssignee,
+      assigneeEmail: normalizedAssigneeEmail,
+      priorityScore,
+      estimatedTime,
+    })
     setTitle("")
     setDescription("")
     setStatus("Open")
     setPriority("Medium")
     setAssignee("")
     setAssigneeEmail("")
-    setPriorityScore(50)
+    setPriorityScore(priorityScoreDefaults.Medium)
+    setIsPriorityScoreCustom(false)
     setEstimatedTime(1)
   }
 
@@ -82,7 +111,13 @@ export function CreateTicketModal({ onCreateTicket }: CreateTicketModalProps) {
           </div>
           <div>
             <Label htmlFor="priority">Priority</Label>
-            <Select value={priority} onValueChange={(value: TicketPriority) => setPriority(value)}>
+            <Select
+              value={priority}
+              onValueChange={(value: TicketPriority) => {
+                setPriority(value)
+                setIsPriorityScoreCustom(false)
+              }}
+            >
               <SelectTrigger>
                 <SelectValue placeholder="Select priority" />
               </SelectTrigger>
@@ -102,7 +137,10 @@ export function CreateTicketModal({ onCreateTicket }: CreateTicketModalProps) {
               max={100}
               step={1}
               value={[priorityScore]}
-              onValueChange={(value) => setPriorityScore(value[0])}
+              onValueChange={(value) => {
+                setPriorityScore(value[0])
+                setIsPriorityScoreCustom(true)
+              }}
             />
             <span className="text-sm text-muted-foreground">{priorityScore}</span>
           </div>
@@ -127,7 +165,10 @@ export function CreateTicketModal({ onCreateTicket }: CreateTicketModalProps) {
               min={0}
               step={0.5}
               value={estimatedTime}
-              onChange={(e) => setEstimatedTime(Number.parseFloat(e.target.value))}
+              onChange={(e) => {
+                const nextValue = Number.parseFloat(e.target.value)
+                setEstimatedTime(Number.isNaN(nextValue) ? 0 : Math.max(0, nextValue))
+              }}
               required
             />
           </div>
@@ -137,4 +178,3 @@ export function CreateTicketModal({ onCreateTicket }: CreateTicketModalProps) {
     </Dialog>
   )
 }
-
